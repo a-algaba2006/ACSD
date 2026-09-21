@@ -1,4 +1,3 @@
-package tema1;
 import java.io.File;
 
 public class Ejemplo3 {
