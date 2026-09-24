@@ -35,7 +35,7 @@ public class ejercicio3 {
 
             int posicion = Integer.parseInt(sc.nextLine());
 
-            RandomAccessFile accederFichero = new RandomAccessFile(ruta, "rw");
+            RandomAccessFile accederFichero = new RandomAccessFile(ruta, "rw"); //accedemos al fichero y elegimos la opcion de leer y escribir el fichero
 
             long tamanioArchivo = accederFichero.length(); //guardamos la lonfitud del archivo en una variable para hacer la comparacion
 
@@ -46,7 +46,7 @@ public class ejercicio3 {
             } else if(posicion >= tamanioArchivo) {
                 System.out.println("Posicion introducida no permitida, no la posicion espeecificada es demasiado grande para lo que hay dentro del fichero");
 
-                accederFichero.close();accederFichero.close();
+                accederFichero.close();
             } else {
 
             accederFichero.seek(posicion); //accede a la posicion numerica indicada
