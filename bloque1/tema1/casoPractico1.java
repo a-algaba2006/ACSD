@@ -1,7 +1,7 @@
 import java.io.FileReader;
 import java.io.FileWriter;
 
-public class ejemplo4 {
+public class casoPractico1 {
 
     public static void main(String[] args) {
 

@@ -1,6 +1,6 @@
 import java.io.File;
 
-public class Ejemplo3 {
+public class casoPractico3 {
     public static void main(String[] args) {
         String nombreCarpeta = "NuevaCarpeta";
         File carpeta = new File("./bloque1/tema1", nombreCarpeta);

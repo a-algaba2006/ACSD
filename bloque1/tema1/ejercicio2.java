@@ -1,7 +1,7 @@
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
 
-public class ejercicio5 {
+public class ejercicio2 {
     public static void main(String[] args) {
 
         String rutaEntrada = "./bloque1/tema1/foton.jpg";

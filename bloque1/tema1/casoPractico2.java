@@ -1,6 +1,6 @@
 import java.io.File;
 
-public class ejemplo2 {
+public class casoPractico2 {
     public static void main(String[] args) {
 
     File ficheroOrigen = new File("./bloque1/tema1/crearFichero.txt"); //llama a la ruta del fichero
