@@ -4,8 +4,8 @@ import java.io.FileOutputStream;
 public class ejercicio2 {
     public static void main(String[] args) {
 
-        String rutaEntrada = "./bloque1/tema1/foton.jpg";
-        String rutasalida = "./bloque1/tema1/copiafoto.jpg";
+        String rutaEntrada = "../tema1/foto.jpg";
+        String rutasalida = "../tema1/copiafoto.jpg";
 
         try {
 
