@@ -1,0 +1,22 @@
+----- Formulario de Matriculación ----- 
+Nombre y Apellidos: Maria
+Email: maria321@gmail.com
+Fecha de Nacimiento:3/10/2004
+Género: Femenino
+Titulación de Acceso: FP Grado Medio
+Observaciones: Le interesa el horario de ma�anas
+-------------------------------------------- Formulario de Matriculación ----- 
+Nombre y Apellidos: Juan
+Email: juan123@gmail.com
+Fecha de Nacimiento:13/05/2005
+Género: Masculino
+Titulación de Acceso: FP Grado Medio
+Observaciones: Interesado en el horario de tardes
+-------------------------------------------- Formulario de Matriculación ----- 
+Nombre y Apellidos: Jose Perez
+Email: jose560@gmail.com
+Fecha de Nacimiento:10/11/2005
+Género: Masculino
+Titulación de Acceso: FP Grado superior
+Observaciones: Interesado en horario de tarde
+---------------------------------------
