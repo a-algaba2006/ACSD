@@ -46,6 +46,8 @@ public class ejercicio6 {
 
                             }
 
+                            acceso.close();
+
                             break;
 
                         case 2:
