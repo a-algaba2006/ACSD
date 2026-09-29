@@ -6,7 +6,7 @@ public class ejercicicio1 {
 
         try {
 
-        File fichero = new File("./bloque1/tema1/crearFichero.txt");
+        File fichero = new File("../tema1/crearFichero.txt");
         if (fichero.createNewFile()) {
             System.out.println("Fichero creado: " + fichero.getName());
         } else {
