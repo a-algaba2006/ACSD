@@ -20,3 +20,11 @@ Género: Masculino
 Titulación de Acceso: FP Grado superior
 Observaciones: Interesado en horario de tarde
 ---------------------------------------
+----- Formulario de Matriculación ----- 
+Nombre y Apellidos: Mario Torres
+Email: mario7890@gmail.com
+Fecha de Nacimiento:11/06/2004
+Género: Masculino
+Titulación de Acceso: FP Grado Medio
+Observaciones: Interesado en horario de tardes
+---------------------------------------
