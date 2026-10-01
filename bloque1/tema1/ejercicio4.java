@@ -22,6 +22,7 @@ public class ejercicio4 {
              //Le decimos al bucle, lee los archivos de entrada con el tamaño de bytes establecido y guardalos en bytesLeidos, mientras NO de -1 al extraer los bytes de la imagen (-1 significa q ya no hay nada)
              while ((bytesLeidos = entrada.read(bufferSize)) != -1) {
                 salida.write(bufferSize, 0, bytesLeidos); //y mientras el bucle guarda informacion, se escribe especificando el tamaño de bytes q se traeran al escribir, por donde debe empezar a escribir(siempre desde la posicion 0), y indicamos el tamaño real q trae el tamaño para construir
+                //es decir a partir de la posicion 0, lee los bytes que caben en el buffer, y los bytes que se han leido, y se estan construyendo
              }
 
              entrada.close();
