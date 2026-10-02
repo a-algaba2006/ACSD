@@ -5,8 +5,6 @@ import java.util.Scanner;
 public class ejercicio6 {
     public static void main(String[] args) {
 
-        try {
-
             boolean continuar = true;
             Scanner sc = new Scanner(System.in);
 
@@ -33,7 +31,7 @@ public class ejercicio6 {
 
                             int posicion = Integer.parseInt(sc.nextLine());
 
-                            char caracterLeido = acceso.readChar();
+                            int caracterLeido = acceso.read();
 
                             if (tamanioAsientos < 0 || posicion >= tamanioAsientos || caracterLeido == 'C') {
                                 System.out.println("Posicion de asiento no disponible");
@@ -86,9 +84,5 @@ public class ejercicio6 {
             }
 
             sc.close();
-
-        } catch (Exception e) {
-            System.out.println("Error desconocido: " + e.getMessage());
-        }
     }
 }

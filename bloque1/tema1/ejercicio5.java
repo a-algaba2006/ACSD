@@ -15,10 +15,15 @@ public class ejercicio5 {
             FileOutputStream salida = new FileOutputStream("../tema1/ejemplo_foto_copia.jpg");
 
             int datos;
-
+            int contador = 0;
+            long inicio1 = System.currentTimeMillis();
             while ((datos = entrada.read()) != -1) {
                 salida.write(datos);
             }
+
+            System.out.println("Se han copiado " + contador + "bytes");
+            long final1 = System.currentTimeMillis();
+            System.out.println("FileInputStream ha tardado " + (final1 - inicio1));
 
             entrada.close();
             salida.close();
@@ -39,10 +44,17 @@ public class ejercicio5 {
 
             byte[] bytes = new byte[4096];
             int datos;
+            int contador = 0;
+            long inicio1 = System.currentTimeMillis();
 
             while ((datos = entradaBF.read(bytes)) != -1) {
                 salidaBF.write(bytes, 0, datos);
+                contador ++;
             }
+
+            System.out.println("Se han copiado " + contador + "bytes");
+            long final1 = System.currentTimeMillis();
+            System.out.println("FileInputStream ha tardado " + (final1 - inicio1));
 
             entradaBF.close();
             salidaBF.close();
@@ -50,5 +62,6 @@ public class ejercicio5 {
         } catch (Exception e) {
             System.out.println("Error desconocido: " + e.getMessage());
         }
+        //Con buffer va por bloques de bytes asi este tipo de operaciones se hace mas rapido, con file se hace byte por byte viajando al disco
     }
 }
