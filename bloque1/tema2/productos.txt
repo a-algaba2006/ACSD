@@ -1,0 +1,3 @@
+Pan: 1.5
+Leche: 1.0
+Huevos: 2.25
