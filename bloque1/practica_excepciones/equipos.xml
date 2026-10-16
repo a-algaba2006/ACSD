@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<equipos>
+    <equipo ciudad="Sevilla">
+        <nombre>Real Betis</nombre>
+    </equipo>
+    <equipo ciudad="Madrid">
+        <nombre>Atletico de Madrid</nombre>
+    </equipo>
+</equipos>   
