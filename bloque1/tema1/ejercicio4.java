@@ -17,7 +17,7 @@ public class ejercicio4 {
             //Definir buffer de lectura y escritura se sigue siempre esta estructura, despues de crear los buffers de operaciones I/O, se define el tamaño en bytes con un array
             //Y establecemos una variable int para el bucle, q pueda guardar los datos leidos y a partir de esa variable construir(o escribir) el archivo necesario con los bytes especificados
             byte[] bufferSize = new byte[1024];
-             int bytesLeidos;
+            int bytesLeidos;
 
              //Le decimos al bucle, lee los archivos de entrada con el tamaño de bytes establecido y guardalos en bytesLeidos, mientras NO de -1 al extraer los bytes de la imagen (-1 significa q ya no hay nada)
              while ((bytesLeidos = entrada.read(bufferSize)) != -1) {

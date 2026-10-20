@@ -23,12 +23,14 @@ public class ejercicio3 {
                 
                 while (st.nextToken() != StreamTokenizer.TT_EOF) {
                     if (st.ttype == StreamTokenizer.TT_NUMBER) {
-                        resultado = st.ttype + st.ttype;
+                        resultado += st.nval;
                     }
                 }
             }
             
             System.out.println( + resultado);
+
+            ln.close();
 
         } catch (Exception e) {
             System.out.println("Error desconocido: " + e.getMessage());

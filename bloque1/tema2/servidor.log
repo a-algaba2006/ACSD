@@ -1,0 +1,5 @@
+2026-10-07 09:00:01 INFO Servidor iniciado
+2026-10-07 09:00:05 ERROR No se pudo conectar a la base de datos
+2026-10-07 09:01:10 INFO Reintentando conexion
+2026-10-07 09:01:12 ERROR Timeout
+2026-10-07 09:02:00 INFO Conexion establecida
