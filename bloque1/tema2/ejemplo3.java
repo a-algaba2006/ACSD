@@ -25,18 +25,19 @@ public class ejemplo3{
 
             DataInputStream lectura = new DataInputStream(new FileInputStream("../tema2/salida.txt"));
 
-            //esto sigue un orden, si primero metes un entero lees el entero, si segundo va un string lees ese string....
+            //solo datos primitivos
+            //esto sigue un orden, si primero metes un entero lees el entero, si segundo va un float, lees ese float....
             int entero1 = lectura.readInt();
             int entero2 = lectura.readInt();
             float numeroFloat = lectura.readFloat();
-            long numeroLong = lectura.readLong();
-
             double leerDouble = lectura.readDouble();
+            long numeroLong = lectura.readLong();
 
             lectura.close();
 
             System.out.println("el numero entero es: " + entero1 + " y " + entero2);
             System.out.println("El decimal es: " + numeroFloat + " y " + leerDouble);
+            System.out.println("Double es: " + leerDouble);
             System.out.println("Long es: " + numeroLong);
 
             
