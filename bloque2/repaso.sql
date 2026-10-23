@@ -1,6 +1,9 @@
+-- paso 1 crear la base de datos y usarla
 drop database if exists tienda_informatica;
 create database tienda_informatica;
 use tienda_informatica;
+
+-- paso 2, crear las tablas
 
  create table cliente(
 	id_cliente int auto_increment primary key,
@@ -52,14 +55,15 @@ show tables;
 
 describe cliente;
 
+-- paso 3, alterar tablas
 /*Modificar la estructura de la tabla ALTER TABLE*/
 alter table cliente add column telefono varchar(9);
 alter table cliente rename column telefono to movil;
 alter table cliente modify column movil varchar(15);
 alter table cliente drop column movil;
 
-/*Insertar datos*/
-
+-- paso 4, insertar datos
+/*Insertar datos con INSERT INTO*/
 insert into cliente(nombre, direccion, ciudad, email)
 values ("Juan Lopez", "C/Andalucia nº 2", "Badajoz", "juan.lopez@davante.org");
 
@@ -86,7 +90,7 @@ insert into venta(id_cliente, id_producto, fecha, cantidad) values
 select * from venta;
 
 
--- continuacion
+-- paso 5, insertar el resto de los datos
 
 INSERT INTO cliente (nombre, direccion, ciudad, email) VALUES
  ('Pepe Tejada',      'Avda. de Sevilla 12',  'Sevilla',   'pepe.tejada@davante.org'),
@@ -143,7 +147,7 @@ insert into cliente(nombre, direccion, ciudad, email) values
 
 select id_cliente, nombre, ciudad from cliente where id_cliente > 8;
 
--- modificar los datos
+-- paso 6, insertando mas datos
 
 update cliente set ciudad = "Cordoba" where id_cliente = 3;
 
@@ -158,7 +162,7 @@ update cliente set ciudad = "Jaen" where id_cliente = 3;
 
 select id_cliente, nombre, ciudad from cliente where id_cliente = 3;
 
-
+-- pso 7 modificar datos (UPDATE)
 -- usar REPLACE
 
 replace into producto (id_producto, nombre, categoria, marca, precio, stock) values
@@ -171,4 +175,99 @@ replace into producto (id_producto, nombre, categoria, marca, precio) values
 
 select * from producto where id_producto = 9;
 
--- borrar filas DELETE
+-- paso 8, borrar datos con DELETE
+
+DELETE FROM cliente WHERE id_cliente IN (10, 11);
+
+SELECT COUNT(*) AS clientes FROM cliente;
+
+DELETE FROM cliente WHERE id_cliente = 1;
+
+DELETE FROM producto WHERE id_producto = 9;
+SELECT COUNT(*) AS productos FROM producto;
+
+-- paso 10, consultas SQL con SELECT
+
+select * from cliente;
+select nombre, ciudad from cliente;
+select nombre as Producto, precio as Precio from producto;
+select marca from producto;
+select distinct marca from producto;
+select distinct categoria from producto;
+
+-- paso 11 WHERE, operadores y nulos
+
+SELECT nombre, precio FROM producto WHERE precio > 100;
+SELECT nombre, precio FROM producto WHERE precio >= 74.90;
+SELECT nombre, precio FROM producto WHERE precio < 15;
+SELECT nombre, marca FROM producto WHERE marca = 'HP';
+SELECT nombre, marca FROM producto WHERE marca <> 'HP';
+
+SELECT id_cliente, nombre, email FROM cliente WHERE email IS NULL;
+SELECT id_cliente, nombre, email FROM cliente WHERE email = NULL;
+SELECT id_cliente, nombre, email FROM cliente WHERE email IS NOT NULL;
+
+-- paso 12, WHERE, LIKE, BETWEEN  e IN
+
+SELECT nombre FROM cliente WHERE nombre LIKE 'P%';       -- empieza por P
+SELECT nombre FROM cliente WHERE nombre LIKE '%Lopez';   -- termina en Lopez
+SELECT nombre FROM cliente WHERE nombre LIKE '%er%';     -- contiene "er"
+SELECT nombre FROM cliente WHERE nombre LIKE '_e%';      -- segunda letra: e
+SELECT nombre, email FROM cliente WHERE email LIKE '%@davante.org';
+
+SELECT nombre, precio FROM producto WHERE nombre LIKE 'Portatil%';
+SELECT nombre, marca FROM producto WHERE nombre LIKE '%Logitech%';
+SELECT nombre, precio FROM producto WHERE precio BETWEEN 10 AND 100;
+SELECT nombre, marca FROM producto WHERE marca IN ('HP', 'Kingston');
+SELECT nombre, categoria FROM producto WHERE categoria IN ('Monitores', 'Impresoras');
+
+-- paso 13, combinar condiciones, AND, OR, NOT y parentesis
+
+SELECT nombre, precio FROM producto WHERE precio > 20 AND precio < 150;
+SELECT nombre, marca FROM producto WHERE marca = 'HP' OR marca = 'Lenovo';
+SELECT nombre, categoria FROM producto WHERE NOT categoria = 'Portatiles';
+
+-- Sin paréntesis: AND se evalúa antes que OR
+SELECT nombre, marca, precio FROM producto
+WHERE marca = 'HP' OR marca = 'Logitech' AND precio < 20;
+
+-- Con paréntesis: primero el OR
+SELECT nombre, marca, precio FROM producto
+WHERE (marca = 'HP' OR marca = 'Logitech') AND precio < 20;
+
+-- paso 14, ordenar con ORDER BY  y limitar con  LIMIT
+select nombre, precio from producto order by precio;
+select nombre, precio from producto order by precio desc;
+
+select categoria, nombre, precio from producto order by categoria asc, precio asc;
+
+select nombre, precio from producto order by precio desc limit 3;
+select nombre, ciudad from cliente order by nombre;
+
+-- paso 15 casos practicos
+
+select * from producto where precio > 100 order by nombre asc;
+
+select nombre, marca, precio from producto where precio between 10 and 150 order by nombre desc;
+
+-- paso 16 consultar varias tablas con join
+
+select v.id_venta, v.fecha, c.nombre as cliente, p.nombre as producto, v.cantidad, v.cantidad * p.precio as importe 
+from venta v join cliente c on (v.id_cliente = c.id_cliente) join producto p on (v.id_producto = p.id_producto) order by v.id_venta;
+
+select v.fecha, p.nombre as producto, v.cantidad
+from venta v join producto p on (v.id_producto = p.id_producto) where v.id_cliente = 1 order by v.fecha;
+
+select c.nombre, sum(v.cantidad * p.precio) as total_gastado
+from venta v 
+join cliente c on (v.id_cliente = c.id_cliente)
+join producto p on (v.id_producto = p.id_producto)
+group by c.id_cliente, c.nombre 
+order by total_gastado desc;
+
+select p.nombre as producto, pr.nombre as proveedor
+from compra c join producto p on (c.id_producto = p.id_producto)
+join proveedor pr on (c.id_proveedor = pr.id_proveedor)
+order by p.nombre, pr.nombre;
+
+-- paso 17 transacciones COMMIT, ROLLBACK, SAVEPOINT
