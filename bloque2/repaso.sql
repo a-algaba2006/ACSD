@@ -271,3 +271,85 @@ join proveedor pr on (c.id_proveedor = pr.id_proveedor)
 order by p.nombre, pr.nombre;
 
 -- paso 17 transacciones COMMIT, ROLLBACK, SAVEPOINT
+
+start transaction;
+
+insert into venta(id_cliente, id_producto, fecha, cantidad) values (3, 1, "2026-10-10", 1);
+insert into venta(id_cliente, id_producto, fecha, cantidad) values (3, 4, "2026-10-10", 2);
+
+update producto set stock = stock - 1 where id_producto = 1;
+update producto set stock = stock - 2 where id_producto = 4;
+
+-- Dentro de la transacción vemos los cambios:
+select id_producto, nombre, stock from producto where id_producto in (1,4);
+select count(*) as ventas from venta;
+
+rollback;
+
+-- Tras el ROLLBACK todo ha vuelto atrás:
+select id_producto, nombre, stock from producto where id_producto in (1,4);
+select count(*) as ventas from venta;
+
+-- ahora con commit
+
+start transaction;
+
+insert into venta(id_cliente, id_producto, fecha, cantidad) values (3, 1, "2026-10-10", 1);
+insert into venta(id_cliente, id_producto, fecha, cantidad) values (3, 4, "2026-10-10", 2);
+update producto set stock = stock - 1 where id_producto = 1;
+update producto set stock = stock - 2 where id_producto = 4;
+
+-- Dentro de la transacción vemos los cambios:
+select id_producto, nombre, stock from producto where id_producto in (1,4);
+select count(*) as ventas from venta;
+
+commit;
+
+-- comprobamos el cambio
+select id_producto, nombre, stock from producto where id_producto in (1,4);
+select count(*) as ventas from venta;
+
+-- ahora usando SAVEPPOINT
+start transaction;
+
+update producto set precio = 519.00 where id_producto = 1; -- id del portatil HP
+savepoint despues_del_portatil;
+update producto set precio = 149.00 where id_producto = 4; -- raton(error de tecleo)
+
+select id_producto, nombre, precio from producto where id_producto in (1,4);
+
+rollback to despues_del_portatil; -- deshace solo lo posterior al savepoint
+
+select id_producto, nombre, precio from producto where id_producto in (1,4);
+
+commit;
+
+-- paso 18 copiar, renombrar y borrar tablas
+
+create table producto_caro like producto;
+insert into producto_caro select * from producto where precio > 100;
+select * from producto_caro;
+
+-- le cambiamos el nombre
+rename table producto_caro to productos_destacados;
+show tables;
+
+-- borrar sin TRUNCATE
+delete from productos_destacados where id_producto > 0;
+insert into productos_destacados (nombre, marca, precio) values ("Prueba 1", "HP", 5.00);
+select id_producto, nombre from productos_destacados;
+
+-- borrar con TRUNCATE
+truncate table productos_destacados;
+insert into productos_destacados (nombre, marca, precio) values ("Prueba 2", "HP", 5.00);
+select id_producto, nombre from productos_destacados;
+
+-- borrar tabla con DROP
+DROP TABLE productos_destacados;
+DROP TABLE productos_destacados;
+DROP TABLE IF EXISTS productos_destacados;
+SHOW TABLES;
+
+-- ejercicios propuestos
+
+select nombre, stock from producto where stock < 30 order by stock asc;
