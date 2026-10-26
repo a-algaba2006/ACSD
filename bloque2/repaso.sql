@@ -352,4 +352,14 @@ SHOW TABLES;
 
 -- ejercicios propuestos
 
+-- ejercicio 1
 select nombre, stock from producto where stock < 30 order by stock asc;
+
+-- ejercicio 2
+select * from cliente where ciudad like "M%";
+
+-- ejercicio 3
+select * from cliente where email is null order by nombre;
+
+-- ejercicio4
+select nombre, marca, precio from producto where marca = "Logitech" and precio < 14;
