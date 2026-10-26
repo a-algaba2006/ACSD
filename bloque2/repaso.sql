@@ -361,5 +361,17 @@ select * from cliente where ciudad like "M%";
 -- ejercicio 3
 select * from cliente where email is null order by nombre;
 
--- ejercicio4
+-- ejercicio 4
 select nombre, marca, precio from producto where marca = "Logitech" and precio < 14;
+
+-- ejercicio 5
+update producto set precio = precio * 1.10 where id_producto in (5, 8);
+select id_producto, nombre, precio from producto where id_producto in (5,8);
+
+-- ejercicio 6
+insert into proveedor(nombre, ciudad, telefono) values ("kingston", "Sevilla", "9800005");
+insert into compra (id_proveedor, id_producto, fecha, cantidad, coste) values (last_insert_id(), 8, "2026-10-26", 100, 5.00);
+select * from compra where fecha = "2026-10-26";
+
+-- ejercicio 7
+select p.nombre, sum(c.cantidad * c.coste) as total_gastado from proveedor p join compra c on (p.id_proveedor = c.id_proveedor) group by p.nombre order by total_gastado desc;
