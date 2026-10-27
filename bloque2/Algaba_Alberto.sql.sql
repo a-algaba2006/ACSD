@@ -136,6 +136,8 @@ INSERT INTO compra (id_proveedor, id_producto, fecha, cantidad, coste) VALUES
 
 select * from cliente;
 select * from producto;
+select * from venta;
+select * from compra;
 
 select count(*) as ventas from venta;
 
@@ -345,8 +347,6 @@ insert into productos_destacados (nombre, marca, precio) values ("Prueba 2", "HP
 select id_producto, nombre from productos_destacados;
 
 -- borrar tabla con DROP
-DROP TABLE productos_destacados;
-DROP TABLE productos_destacados;
 DROP TABLE IF EXISTS productos_destacados;
 SHOW TABLES;
 
