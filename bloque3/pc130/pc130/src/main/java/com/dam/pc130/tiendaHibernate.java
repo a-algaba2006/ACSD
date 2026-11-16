@@ -5,10 +5,10 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.ConfigurableApplicationContext;
 
 @SpringBootApplication
-public class Pc130Application {
+public class tiendaHibernate {
 
 	public static void main(String[] args) {
-		ConfigurableApplicationContext ctx = SpringApplication.run(Pc130Application.class, args);
+		ConfigurableApplicationContext ctx = SpringApplication.run(tiendaHibernate.class, args);
 
         // Pedimos a Spring los repositorios
         CategoriaRepository categorias = ctx.getBean(CategoriaRepository.class);
